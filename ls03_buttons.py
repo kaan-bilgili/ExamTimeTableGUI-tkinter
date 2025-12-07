@@ -5,7 +5,7 @@ def click():
 
 window =Tk()
 window.geometry("300x300")
-icon = PhotoImage(file="icon.png")  #load an icon image
+icon = PhotoImage(file="C:\\Users\\Kaan\\Desktop\\tk\\GUI\\icon.png")  #load an icon image
 
 
 button = Button(window, text="Click or DIEEE")

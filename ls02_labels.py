@@ -3,7 +3,7 @@ window = Tk()      #instantiate an instance of a windows
 window.title("Labels in Tkinter")  #set the title of the window
 window.geometry("500x500")  #set the size of the window
 
-photo = PhotoImage(file= "C:\\Users\\Kaan\\Desktop\\tk\\icon.png")
+photo = PhotoImage(file= "C:\\Users\\Kaan\\Desktop\\tk\\GUI\\icon.png")
 
 label=Label(window,text="Hello World",
             font= ("Arial",40,"italic"), 
