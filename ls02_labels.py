@@ -15,12 +15,15 @@ label=Label(window,text="Hello World",
             pady=20,
             image=photo, 
             compound=BOTTOM 
-            
+        
             )
+
+
 label.pack()
 
 label2= Label(window , text="Hello Earth" , font=("calibri",12,"bold"))
 label2.place(x=0, y=0)
+
 
 window.config(background="lightblue")
 window.mainloop()
