@@ -2,6 +2,7 @@ from tkinter import *
 
 window=Tk()
 frame = Frame(window)
+
 Button(frame,text="W",font=("calibri",20,'bold'),width=3).pack(side="top")
 Button(frame,text="A",font=("calibri",20,'bold'),width=3).pack(side="left")
 Button(frame,text="S",font=("calibri",20,'bold'),width=3).pack(side="left")
