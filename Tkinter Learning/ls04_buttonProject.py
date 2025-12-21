@@ -10,7 +10,7 @@ def click():
 
 
 window = Tk()
-icon = PhotoImage(file="C:\\Users\\Kaan\\Desktop\\tk\\GUI\\icon.png")
+icon = PhotoImage(file= "C:\\Users\\Kaan\\Desktop\\tk\\GUI\\Tkinter Learning\\icon.png")
 
 button = Button(window, text="zikirmatik ")
 button.config(command=click,

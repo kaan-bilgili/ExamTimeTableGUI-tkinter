@@ -4,7 +4,7 @@ def getValue():
 
 
 window = Tk()
-icon = PhotoImage(file="C:\\Users\\Kaan\\Desktop\\tk\\GUI\\icon.png")
+icon = PhotoImage(file= "C:\\Users\\Kaan\\Desktop\\tk\\GUI\\Tkinter Learning\\icon.png")
 icon = icon.subsample(5,5)
 smileLabel = Label(window,image=icon)
 smileLabel.pack()
