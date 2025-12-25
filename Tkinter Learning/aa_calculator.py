@@ -1,14 +1,19 @@
 from tkinter import * 
+import time
 
 
 
 def clickbutton(value):
-    global equation
-    current=entry.get()
-    entry.delete(0,END)
-    entry.insert(0,str(current)+str(value))
-    equation = (str(current)+str(value))
+    global equation, error_shown
 
+    if error_shown:
+        entry.delete(0, END)
+        error_shown = False
+
+    current = entry.get()
+    entry.delete(0, END)
+    entry.insert(0, str(current) + str(value))
+    equation = str(current) + str(value)
 
 def clear():
     entry.delete(0,END)
@@ -16,17 +21,27 @@ def clear():
 
 
 def equal():
-    global equation
-    equation=entry.get()
-    result=eval(equation)
-    entry.delete(0,END)
-    entry.insert(0,result)
+    global equation, error_shown
+    equation = entry.get()
+    try:
+        result = eval(equation)
+        entry.delete(0, END)
+        entry.insert(0, result)
+        error_shown = False
+    except:
+        entry.delete(0, END)
+        entry.insert(0, "Error")
+        error_shown = True
+
+        
+
 
 def backspace():
     entry.delete(len(entry.get())-1 , END)
 
     
 equation=""
+error_shown=False
 
 window = Tk()
 window.title("Calculator") 
@@ -55,6 +70,7 @@ buttonminus=Button(text="-",width=9,height=4,command=lambda:clickbutton("-"))
 buttonmultiply=Button(text="*",width=9,height=4,command=lambda:clickbutton("*"))
 buttondivide=Button(text="/",width=9,height=4,command=lambda:clickbutton("/"))
 buttonequal=Button(text="=",width=9,height=4,command=equal)
+window.bind("<Return>", lambda event: equal())
 
 
 
