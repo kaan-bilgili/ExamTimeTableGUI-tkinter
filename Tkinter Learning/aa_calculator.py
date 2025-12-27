@@ -9,11 +9,13 @@ def clickbutton(value):
     if error_shown:
         entry.delete(0, END)
         error_shown = False
-
-    current = entry.get()
-    entry.delete(0, END)
-    entry.insert(0, str(current) + str(value))
-    equation = str(current) + str(value)
+    if len(entry.get())==0 and value == 0:
+        pass
+    else:
+        current = entry.get()
+        entry.delete(0, END)
+        entry.insert(0, str(current) + str(value))
+        equation = str(current) + str(value)
 
 def clear():
     entry.delete(0,END)
@@ -34,10 +36,13 @@ def equal():
         error_shown = True
 
         
-
-
 def backspace():
-    entry.delete(len(entry.get())-1 , END)
+    global error_shown
+    if error_shown:
+        entry.delete(0, END)
+        error_shown = False
+    else:
+        entry.delete(len(entry.get())-1 , END)
 
     
 equation=""
@@ -73,11 +78,6 @@ buttonequal=Button(text="=",width=9,height=4,command=equal)
 window.bind("<Return>", lambda event: equal())
 
 
-
-
-
-
-
 button1.grid(row=2,column=1)
 button2.grid(row=2,column=2)
 button3.grid(row=2,column=3)
@@ -94,12 +94,6 @@ buttonmultiply.grid(row=4,column=4)
 buttondivide.grid(row=5,column=4)
 buttonequal.grid(row=5,column=3)
 buttondelete.grid(row=5,column=1)
-
-
-
-
-
-
 
 
 window.mainloop()
