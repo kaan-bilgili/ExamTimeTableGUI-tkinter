@@ -31,9 +31,9 @@ def winner():
     global player1,player2
     buttons=[0,button1,button2,button3,button4,button5,button6,button7,button8,button9]
     
-    if (buttons[1].cget("text") == buttons[2].cget("text") ==
-        buttons[3].cget("text") != ""): 
-        endGame(button1.cget("text"))
+    if (buttons[1]["text"] == buttons[2]["text"] ==
+        buttons[3]["text"] != ""): 
+        endGame(button1["text"])
         return
     elif (buttons[4].cget("text") == buttons[5].cget("text") ==
         buttons[6].cget("text") != ""):
@@ -112,11 +112,15 @@ def chooseStarter():
         player2Label.config(bg="white")
         player1="X"
         player2="O"
+        player1Label.config(text="Kaan (X)")
+        player2Label.config(text="Banu (O)")
     else:
         player2Label.config(bg="green")
         player1Label.config(bg="white")
         player1="O"
         player2="X"
+        player1Label.config(text="Kaan (O)")
+        player2Label.config(text="Banu (X)")
 
 
 
