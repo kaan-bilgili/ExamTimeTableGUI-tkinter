@@ -1,23 +1,94 @@
 from tkinter import *
 import random
+from tkinter import messagebox
+
+
+
+def endGame(winner=None):
+    global player1,player2;round
+    button1.config(state='disabled')
+    button2.config(state='disabled')
+    button3.config(state='disabled')
+    button4.config(state='disabled')
+    button5.config(state='disabled')
+    button6.config(state='disabled')
+    button7.config(state='disabled')
+    button8.config(state='disabled')
+    button9.config(state='disabled')
+    if round==9 and winner==None:
+        messagebox.showinfo(title="It's a tie",
+                        message="No one wins!",
+                        )
+    else:
+        messagebox.showinfo(
+                        "We have a winner",
+                        f"{symbolToName[winner]} wins!"
+)
+
+
+
+def winner():
+    global player1,player2
+    buttons=[0,button1,button2,button3,button4,button5,button6,button7,button8,button9]
+    
+    if (buttons[1].cget("text") == buttons[2].cget("text") ==
+        buttons[3].cget("text") != ""): 
+        endGame(button1.cget("text"))
+        return
+    elif (buttons[4].cget("text") == buttons[5].cget("text") ==
+        buttons[6].cget("text") != ""):
+        endGame(button4.cget("text"))
+        return
+    elif (buttons[7].cget("text") == buttons[8].cget("text") ==
+        buttons[9].cget("text") != ""):
+        endGame(button7.cget("text"))
+        return
+    elif (buttons[1].cget("text") == buttons[4].cget("text") ==
+        buttons[7].cget("text") != ""):
+        endGame(button1.cget("text"))
+        return
+    elif (buttons[2].cget("text") == buttons[5].cget("text") ==
+        buttons[8].cget("text") != ""):
+        endGame(button2.cget("text"))
+        return
+    elif (buttons[3].cget("text") == buttons[6].cget("text") ==
+        buttons[9].cget("text") != ""):
+        endGame(button3.cget("text"))
+        return
+    elif (buttons[1].cget("text") == buttons[5].cget("text") ==
+        buttons[9].cget("text") != ""):
+        endGame(button1.cget("text"))
+        return
+    elif (buttons[3].cget("text") == buttons[5].cget("text") ==
+        buttons[7].cget("text") != ""):
+        endGame(button3.cget("text"))
+        return
+    if round == 9:
+        endGame()
+    
+        
+    
 
 
 def newGame():
-    global player1,player2
-    button1.config(text="")
-    button2.config(text="")
-    button3.config(text="")
-    button4.config(text="")
-    button5.config(text="")
-    button6.config(text="")
-    button7.config(text="")
-    button8.config(text="")
-    button9.config(text="")
+    global player1,player2,round
+    round=0
+    
+    button1.config(text="",state='active')
+    button2.config(text="",state='active')
+    button3.config(text="",state='active')
+    button4.config(text="",state='active')
+    button5.config(text="",state='active')
+    button6.config(text="",state='active')
+    button7.config(text="",state='active')
+    button8.config(text="",state='active')
+    button9.config(text="",state='active')
     chooseStarter()
 
 def click(button):
-    global player1,player2
+    global player1,player2,round
     if button.cget("text") == '':
+        round+=1
         if player1Label.cget("bg") == "green":
             button.config(text=player1)
             player2Label.config(bg="green")
@@ -27,7 +98,7 @@ def click(button):
             button.config(text=player2)
             player1Label.config(bg="green")
             player2Label.config(bg="white")
-
+    winner()
 
 
 
@@ -96,18 +167,19 @@ for i in range(2, 5):
     window.grid_rowconfigure(i, weight=1)
 
 
+symbolToName = {
+    "X": "Kaan",
+    "O": "Banu"
+}
+
+
 player1=""
 player2=""
+round=0
+
 
 
 chooseStarter()
-
-
-
-
-
-
-
 
 window.mainloop()
 
